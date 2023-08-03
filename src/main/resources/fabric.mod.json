@@ -1,0 +1,31 @@
+{
+    "schemaVersion": 1,
+    "id": "botblocker",
+    "version": "1.2.0",
+    "name": "BotBlocker mod",
+    "description": "BotBlocker is a mod for Fabric Minecraft servers designed to limit bot intrusion.",
+    "authors": [
+        "Aitor Astorga"
+    ],
+    "contact": {
+        "homepage": "https://aichan.eus/",
+        "sources": "https://github.com/FabricMC/fabric-BotBlocker-mod"
+    },
+    "license": "CC0-1.0",
+    "icon": "assets/botblocker/logo.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "eus.aichan.BotBlocker"
+        ]
+    },
+    "depends": {
+        "fabricloader": ">=0.14.21",
+        "minecraft": "~1.20.1",
+        "java": ">=17",
+        "fabric-api": "*"
+    },
+    "suggests": {
+        "another-mod": "*"
+    }
+}
