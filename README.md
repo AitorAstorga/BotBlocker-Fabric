@@ -1,23 +1,7 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
 
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -30,23 +14,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric">
+    <img src="images/logo.png" alt="Logo" width="160" height="160">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">BotBlocker</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A Minecraft Bukkit/Spigot plugin and Fabric mod designed to limit bot intrusion!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric/issues">Request Feature</a>
   </p>
 </div>
 
@@ -56,10 +38,20 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
+    <li><a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#versions-of-the-project">Versions of the Project</a></li>
+    <li>
+      <a href="#functionality">Functionality</a>
+      <ul>
+        <li><a href="#initialization">Initialization</a></li>
+        <li><a href="#player-join">Player Join</a></li>
+        <li><a href="#player-quit">Player Quit</a></li>
+        <li><a href="#commands">Commands</a></li>
+        <li><a href="#configuration-files">Configuration Files</a></li>
       </ul>
     </li>
     <li>
@@ -70,7 +62,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -83,99 +74,71 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+BotBlocker is a solution for Minecraft servers designed to limit bot intrusion. It is available for both Bukkit/Spigot Minecraft servers and as a Fabric mod. If a user logs out too quickly after joining (indicating they might be a bot), the user is banned. This approach limits the number of login attempts from each UUID, effectively mitigating the consequences of a bot attack.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+* [Fabric](https://fabricmc.net/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+## Versions of the Project
+[Bukkit/Spigot BotBlocker](https://github.com/BotBlocker-Minecraft/BotBlocker)
+
+[Fabric BotBlocker](https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Functionality
+
+### Initialization
+When the server starts, BotBlocker initializes its configuration files (`config.yml` and `players.yml`). The initial default time limit for joining and leaving is set to 20 seconds. A message indicating the mod has successfully loaded with the set time limit is logged to the console.
+
+### Player Join
+When a player joins, if BotBlocker is enabled and the player is not already exempt from BotBlocker's checks, the mod/plugin records the player's UUID and the current time.
+
+### Player Quit
+When a player quits, BotBlocker calculates the duration of their connection. If this time is less than the set time limit and BotBlocker is enabled, the player is considered a bot. They get banned and a ban entry is added to the `players.yml` file. A disconnect message is sent to the player and a message is logged to the console. If the player stays longer than the time limit, they are deemed a legitimate player. Their UUID is added to the `players.yml` file as exempt.
+
+### Commands
+* `/BotBlocker enable` - Enables BotBlocker.
+* `/BotBlocker disable` - Disables BotBlocker.
+* `/BotBlocker setTimeLimit [seconds]` - Sets the time limit for detecting bots.
+
+### Configuration Files
+BotBlocker maintains its configuration and the list of player UUIDs in `config.yml` and `players.yml` files, respectively.
+
+Note: Players identified as legitimate are marked as such in the `players.yml` file and are not checked again in the future. If BotBlocker is disabled, it stops checking players for potential bot activity.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get this plugin up and running on your server, follow these steps:
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+* Java 18 or later
+* A Fabric server (1.20.1 or later)
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+1. Download the latest BotBlocker `.jar` file from the [releases page](https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric/releases).
+2. Move the downloaded `.jar` file to the `plugins/` directory in your server.
+3. Restart your server. This will generate a default configuration file.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+Once installed and enabled, BotBlocker works in the background without any intervention. If needed, you can adjust the bot protection parameters in the generated `config.yml` file.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -198,7 +161,6 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- LICENSE -->
 ## License
 
@@ -207,63 +169,39 @@ Distributed under the GNU General Public License v3.0. See `LICENSE` for more in
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- CONTACT -->
 ## Contact
 
 Aitor Astorga Saez de Vicuña - a.astorga.sdv@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/BotBlocker-Minecraft](https://github.com/BotBlocker-Minecraft)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [markdown-badges](https://github.com/Ileriayo/markdown-badges#table-of-contents)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+* [https://github.com/othneildrew/Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/BotBlocker-Minecraft/BotBlocker-Fabric.svg?style=for-the-badge
+[contributors-url]: https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric/graphs/contributors
+
+[forks-shield]: https://img.shields.io/github/forks/BotBlocker-Minecraft/BotBlocker-Fabric.svg?style=for-the-badge
+[forks-url]: https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric/network/members
+
+[stars-shield]: https://img.shields.io/github/stars/BotBlocker-Minecraft/BotBlocker-Fabric.svg?style=for-the-badge
+[stars-url]: https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric/stargazers
+
+[issues-shield]: https://img.shields.io/github/issues/BotBlocker-Minecraft/BotBlocker-Fabric.svg?style=for-the-badge
+[issues-url]: https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric/issues
+
+[license-shield]: https://img.shields.io/github/license/BotBlocker-Minecraft/BotBlocker-Fabric.svg?style=for-the-badge
+[license-url]: https://github.com/BotBlocker-Minecraft/BotBlocker-Fabric/blob/master/LICENSE
+
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/aitor-astorga-saez-de-vicuña
-[product-screenshot]: images/screenshot.png
 
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[product-screenshot]: images/screenshot.png
